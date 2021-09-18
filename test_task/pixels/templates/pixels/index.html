@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>pixels counter</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" media="all">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
+</head>
+
+<body>
+  <div class="wrapper">
+      {% block image %}{% endblock %}
+      {% block type %}{% endblock %}
+      {% block content %}{% endblock %}
+  </div>
+  {% block bottom %}{% endblock %}
+  </div>
+  </div>
+</body>
+
+</html>

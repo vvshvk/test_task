@@ -1,0 +1,44 @@
+{% extends 'pixels/index.html' %}
+
+{% block type %}
+<div class="pixels-info-result">
+    <div class="outer">
+        <div class="inner">
+            <label><a href="{% url 'main' %}" >Back</a></label>
+        </div>
+    </div>
+    <div class="pixels-result-text">{% endblock %}
+
+{% block image %}
+<div class="pixels-img">
+    {% if img_obj %}
+    <img src="{{ img_obj }}" alt="connect" style="max-height:360px">
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block content %}
+        <h1>result</h1>
+          <p>black: {{ black }}
+              <br>white: {{ white }}
+              <br>{% if black > white %}there are more black pixels than white ones{% endif %}
+              {% if white > black %}there are more white pixels than black ones{% endif %}
+              <br>{% if count_hex != -1 %}{{ count_hex }}{% endif %}
+          </p>
+{% endblock %}
+
+{% block bottom %}
+        <div class="pixels-bottom-result">
+            <form method="post" action="{% url 'count_hex' %}">
+                {% csrf_token %}
+                <div class="check-hex">
+                    <input id="hex" name="hex" type="text" placeholder="HEX">
+                    <input type="hidden" name="path" value="{{ img }}">
+                    <input type="hidden" name="url" value="{{ img_obj }}">
+                    <input type="hidden" name="black" value="{{ black }}">
+                    <input type="hidden" name="white" value="{{ white }}">
+                    <button type="submit">check</button>
+                </div>
+            </form>
+        </div>
+{% endblock %}
